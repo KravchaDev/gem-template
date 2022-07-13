@@ -3,8 +3,8 @@
 
 lib_name = 'my_new_library'
 
-require_relative('./lib/my_new_library/version')
-repository_url = "https://github.com/kachick/#{lib_name}"
+require_relative './lib/my_new_library/version'
+repository_url = "https://github.com/kravchadev/#{lib_name}"
 
 Gem::Specification.new do |gem|
   gem.summary       = %q{my_new_library}
@@ -17,19 +17,19 @@ Gem::Specification.new do |gem|
   gem.version       = MyNewLibrary::VERSION
 
   gem.metadata = {
-    'documentation_uri'     => 'https://kachick.github.io/my_new_library/',
+    'documentation_uri'     => 'https://kravchadev.github.io/my_new_library/',
     'homepage_uri'          => repository_url,
     'source_code_uri'       => repository_url,
     'bug_tracker_uri'       => "#{repository_url}/issues",
     'rubygems_mfa_required' => 'true'
   }
 
-  gem.required_ruby_version = Gem::Requirement.new('>= 2.7.2')
+  gem.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
   # common
 
-  gem.authors       = ['Kenichi Kamiya']
-  gem.email         = ['kachick1+ruby@gmail.com']
+  gem.authors       = ['Danila Kravchenko']
+  gem.email         = ['coderkravcha@gmail.com']
   git_managed_files = `git ls-files`.lines.map(&:chomp)
   might_be_parsing_by_tool_as_dependabot = git_managed_files.empty?
   base_files = Dir['README*', '*LICENSE*',  'lib/**/*', 'sig/**/*'].uniq
