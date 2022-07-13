@@ -1,0 +1,28 @@
+/coverage/
+/pkg/
+/spec/reports/
+/test/tmp/
+/tmp/
+
+.rspec_status
+
+# Used by dotenv library to load environment variables.
+.env
+.env.production
+
+# Ignore Byebug command history file.
+.byebug_history
+
+## Documentation cache and generated files:
+/.yardoc/
+/_yardoc/
+/doc/
+/rdoc/
+
+## Environment normalization:
+/.bundle/
+/vendor/
+
+*.lock
+
+.DS_Store

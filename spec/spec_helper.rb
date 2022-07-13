@@ -1,0 +1,37 @@
+# coding: us-ascii
+# frozen_string_literal: true
+
+require 'rspec'
+require 'rspec/matchers/power_assert_matchers'
+
+RSpec.configure do |config|
+  config.disable_monkey_patching!
+  config.warnings = true
+  config.raise_on_warning = true
+
+  # See https://github.com/rspec/rspec-expectations/blob/61fe1bc203fa7b906d3034401fa90f1115cb48ae/lib/rspec/expectations/configuration.rb
+  config.expect_with(:rspec) do |expect_config|
+    expect_config.syntax = :expect
+    expect_config.strict_predicate_matchers = true
+    expect_config.include_chain_clauses_in_custom_matcher_descriptions = true
+    expect_config.on_potential_false_positives = :raise
+  end
+
+  # Enable flags like --only-failures and --next-failure
+  config.example_status_persistence_file_path = '.rspec_status'
+end
+
+require 'warning'
+
+Warning[:deprecated] = true
+Warning[:experimental] = true
+
+Gem.path.each do |path|
+  Warning.ignore(//, path)
+end
+
+Warning.process do |_warning|
+  :raise
+end
+
+require_relative '../lib/my_new_library'

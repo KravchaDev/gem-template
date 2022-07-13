@@ -1,0 +1,19 @@
+class MyNewLibrary < Object
+  @integer: Integer?
+
+  attr_reader milliseconds: Integer
+
+  # ```ruby
+  # something = MyNewLibrary.neew
+  # something.inspect #=> ":)"
+  # ```
+  def inspect: -> String
+
+  private
+
+  # A private API. Should not be used in your code.
+  def self.new: (milliseconds: Integer, integer: Integer) -> MyNewLibrary
+
+  # A private API. Should not be used in your code.
+  def initialize: (milliseconds: Integer, integer: Integer) -> void
+end

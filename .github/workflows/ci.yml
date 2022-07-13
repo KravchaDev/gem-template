@@ -1,0 +1,50 @@
+# https://docs.github.com/ja/actions/reference/workflow-syntax-for-github-actions
+name: CI
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '.vscode'
+      - '**.md'
+      - '.github/dependabot.yml'
+      - '.github/workflows/lint.yml'
+      - '.github/workflows/deploy_documents.yml'
+      - '.github/workflows/dependency-review.yml'
+      - '.github/workflows/auto-merge-dependabot-prs.yml'
+      - 'sig'
+      - 'Steepfile'
+      - '.yardopts'
+  pull_request:
+    paths-ignore:
+      - '.vscode'
+      - '**.md'
+      - '.github/dependabot.yml'
+      - '.github/workflows/lint.yml'
+      - '.github/workflows/deploy_documents.yml'
+      - '.github/workflows/dependency-review.yml'
+      - '.github/workflows/auto-merge-dependabot-prs.yml'
+      - 'sig'
+      - 'Steepfile'
+      - '.yardopts'
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        # Due to https://github.com/actions/runner/issues/849, we have to use quotes for '3.0'
+        ruby: ['head', '3.1', '3.0', '2.7']
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        env:
+          BUNDLE_WITHOUT: development
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - run: bundle exec rake test_behaviors --suppress-backtrace='\/bundle'
+        env:
+          BUNDLE_WITHOUT: development
