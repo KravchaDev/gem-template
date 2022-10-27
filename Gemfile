@@ -29,7 +29,7 @@ end
 
 group(:test) do
   gem('test-unit', '~> 3.5.5')
-  gem('rspec', '~> 3.11.0')
+  gem('rspec', '~> 3.12.0')
   gem('rspec-matchers-power_assert_matchers', '~> 0.0.3')
   gem('warning', '~> 1.3.0')
 end
