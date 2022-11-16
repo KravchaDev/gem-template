@@ -19,7 +19,7 @@ group(:development) do
   gem('benchmark-ips', '~> 2.10.0', require: false)
   gem('rubocop', '~> 1.38.0', require: false)
   gem('rubocop-rake', '~> 0.6.0', require: false)
-  gem('rubocop-performance', '~> 1.15.0', require: false)
+  gem('rubocop-performance', '~> 1.15.1', require: false)
   gem('rubocop-rubycw', '~> 0.1.6', require: false)
   gem('rubocop-thread_safety', '~> 0.4.4', require: false)
 
